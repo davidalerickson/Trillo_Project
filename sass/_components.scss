@@ -15,6 +15,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: $bp-smallest) { //move searchbar to end, also implement flex-wrap: wrap in header to allow it to bumb to next line if need be.
+        order: 1;
+        flex: 0 0 100%;
+        background-color: var(--color-grey-light-2);
+     }
     &__input {
         font-family: inherit;
         font-size: inherit;
@@ -58,6 +64,7 @@
     align-self: stretch;
     align-items: center;
     margin-right: 2rem;
+
 
     & > * {
         padding: 0 2rem;
@@ -110,11 +117,26 @@
     font-size: 1.4rem;
     list-style: none;
     margin-top: 3.5rem;
+ 
+    @media only screen and (max-width: $bp-medium) {
+       display: flex;
+       margin: 0;
+    }
+
     &__item {
         position: relative;
         &:not(:last-child) {
             margin-bottom: .5rem;
+
+            @media only screen and (max-width: $bp-medium) {
+                margin: 0;
+             }
         }
+
+        @media only screen and (max-width: $bp-medium) {
+            flex: 1;
+         }
+
     }
     &__item::before {
         content: "";
@@ -151,12 +173,29 @@
         align-items: center;
         z-index: 10; //make sure it is on top of animated back
         position: relative; //so that zindex works
+        
+        @media only screen and (max-width: $bp-medium) {
+            justify-content: center;
+            padding: 2rem;
+         }
+
+         @media only screen and (max-width: $bp-small) { //put icon on top of link text and reduce padding
+            flex-direction: column;
+            padding: 1.5rem .5rem;
+         }
+
     }
     &__icon {
         width: 1.75rem;
         height: 1.75rem;
         margin-right: 2rem;
         fill: currentColor;
+        @media only screen and (max-width: $bp-small) { //get rid of right margin to allow centering of icon on top of link
+            margin-right: 0;
+            margin-bottom: 0.7rem;
+            width: 1.5rem;
+            height: 1.5rem;
+         }
     }
 }
 
@@ -171,6 +210,10 @@
     color: var(--color-grey-light-4);
     text-align: center;
     padding: 2.5rem;
+
+    @media only screen and (max-width: $bp-medium) {
+        display: none;
+     }
 }
 
 ////////////
@@ -198,6 +241,11 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         padding: 1.5rem 1rem;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.8rem;
+            padding: 1.5rem 2rem;
+         }
     }
 
     &__stars {
@@ -232,11 +280,19 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+
+        @media only screen and (max-width: $bp-small) {
+            padding: 0 1.5rem;
+         }
     }
 
     &__rating_count {
         font-size: .8rem;
         text-transform: uppercase;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: .5rem;
+         }
     }
 
     &__rating-average {
@@ -244,6 +300,9 @@
         font-weight: 300;
         margin-bottom: -5px;
 
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.8rem;
+         }
     }
 
 }
@@ -369,12 +428,12 @@ align-items: center;
         border: solid white 3px;
         box-sizing: content-box;
         &:not(:last-child) {
-            margin-right: -1.5rem;
+            margin-right: -2rem;
         }
     }
 
     &__friends {
-
+        display: flex;
     }
 
 }
@@ -387,6 +446,10 @@ align-items: center;
     padding: 3rem;
     margin-bottom: 3.5rem;
     position: relative; //to position quote in befoee psuedoelement
+    @media only screen and (max-width: $bp-medium) {
+        padding: 2rem;
+        margin-bottom: 3rem;
+     }
 
     &__text {
         color: var(--color-grey-dark-3);
@@ -456,6 +519,9 @@ align-items: center;
 .cta {
     padding: 3.5rem 0;
     text-align: center;
+    @media only screen and (max-width: $bp-medium) {
+        padding: 2.5rem 0;
+     }
 
     &__book-now {
         font-size: 2rem;
